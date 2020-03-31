@@ -1,0 +1,12 @@
+[package]
+name = "length-extension"
+version = "0.1.0"
+authors = ["Marcelo Miranda <marcelo.caridade@protonmail.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+hex = "0.4.2"
+sha2 = { git = "https://github.com/marcelo140/hashes" }
+
