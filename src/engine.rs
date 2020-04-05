@@ -34,10 +34,11 @@ impl LengthExtensionEngine {
         v
     }
 
-    pub fn candidate_inputs(&self) -> CandidateInputs {
+    pub fn candidate_inputs(&self, max_secret_size: usize) -> CandidateInputs {
         CandidateInputs {
             engine: self,
             secret_size: 0,
+            max_secret_size: max_secret_size,
         }
     }
 
@@ -51,19 +52,19 @@ impl LengthExtensionEngine {
 
         hasher.result().as_slice().to_owned()
     }
-
 }
 
 pub struct CandidateInputs<'a> {
     engine: &'a LengthExtensionEngine,
     secret_size: usize,
+    max_secret_size: usize,
 }
 
 impl<'a> Iterator for CandidateInputs<'a> {
     type Item = Vec<u8>;
 
     fn next(&mut self) -> Option<Self::Item> {
-        if self.secret_size == usize::MAX {
+        if self.secret_size == self.max_secret_size {
             return None;
         }
 

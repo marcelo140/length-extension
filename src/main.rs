@@ -29,8 +29,7 @@ fn main() {
     let digest = engine::into_sha256_state(&hex::decode(ORIGINAL_MAC).unwrap());
     let engine = LengthExtensionEngine::new(ORIGINAL_REQUEST, REQUEST_EXTENSION);
 
-
-    for (secret_size, candidate_input) in engine.candidate_inputs().enumerate() {
+    for (secret_size, candidate_input) in engine.candidate_inputs(1024).enumerate() {
         let tampered_mac = engine.tampered_mac(&digest, secret_size);
 
         if MockService::validate_message(&candidate_input, &tampered_mac.as_slice()) {
