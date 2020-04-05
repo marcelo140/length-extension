@@ -71,7 +71,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 [[package]]
 name = "sha2"
 version = "0.8.1"
-source = "git+https://github.com/marcelo140/hashes#6db5681005de86e9ad63edfeb239d40426a3bba3"
+source = "git+https://github.com/marcelo140/hashes#08e51a3a07fae5f48a74db3fab7e49b2acc45169"
 dependencies = [
  "block-buffer 0.7.3 (registry+https://github.com/rust-lang/crates.io-index)",
  "digest 0.8.1 (registry+https://github.com/rust-lang/crates.io-index)",
