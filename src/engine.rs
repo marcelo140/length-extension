@@ -18,7 +18,7 @@ impl LengthExtensionEngine {
         }
     }
 
-    fn candidate_message(&self, secret_size: usize) -> Vec<u8> {
+    pub fn candidate_message(&self, secret_size: usize) -> Vec<u8> {
         let input_size = (secret_size + self.message.len()) as u64;
         let extra_padding = BLOCK_SIZE - (self.message.len() + secret_size + MINIMUM_PADDING % BLOCK_SIZE);
         let capacity = self.message.len() + extra_padding + MINIMUM_PADDING + self.extension.len();

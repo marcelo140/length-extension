@@ -46,3 +46,26 @@ fn main() {
     std::process::exit(1);
 }
 
+#[test]
+fn readme_example() {
+    let message = "name=escolhido&role=user";
+    let extension = "&role=admin";
+    let secret = "tunnapasta"; // yet, that's the secret
+
+    let mut secured_message = secret.as_bytes().to_vec();
+    secured_message.extend(message.as_bytes());
+
+    let mut hasher = Sha256::new();
+    hasher.input(&secured_message);
+
+    let mac = hasher.result();
+    let internal_state = engine::into_sha256_state(&mac);
+
+    println!("{}", hex::encode(mac.as_slice()));
+
+    let engine = LengthExtensionEngine::new(message, extension);
+    let tampered_mac = engine.tampered_mac(&internal_state, secret.len());
+    let tampered_input = engine.candidate_message(secret.len());
+
+    println!("MAC:\n{:?}\nInput:{:?}", hex::encode(tampered_mac), tampered_input);
+}
