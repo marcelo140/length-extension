@@ -32,7 +32,7 @@ The padding is formed by the byte 0x80 that separates the message from the remai
 
 If we are working with blocks of 64 bytes, as in the case of SHA-256, and the message has 56 bytes that leaves us only with 8 available bytes for the padding. To overcome this we add an entire new block.
 
-The padding is always added, even if the input is a multiple of N. This is because it also acts as strenghning factor
+The padding is always added, even if the input is a multiple of N. This is because it also acts as a strengthening factor
 
 1. by separating the message from the padding with the byte 0x80, avoiding messages that naturally end with zeroes from having similar blocks as messages that are shorter and have the same zeroes because of the padding.
 2. by appending the size of the message to the last block.
