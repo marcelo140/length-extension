@@ -82,7 +82,7 @@ The only thing missing is the secret's length. That's quite simple though, we br
 ![Two blocks with known size](./docs/input_2blocks_known_size.svg "Two blocks with known size")
 
 We now have all the missing pieces:
-1) We still don't the secret but we the entire purpose of this attack is to do stuff without it. It would be a bummer to discover it at this point.
+1) We still don't know the secret but the entire purpose of this attack is to do stuff without it. It would be a bummer to discover it at this point.
 2) The number of zeroes needed to pad the 64-bytes blocks
 3) The original message size (34 bytes) as well as the extended message size with padding included (75 bytes).
 
